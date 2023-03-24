@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Linking, Text, View, Image, TouchableOpacity } from 'react-native';
 import { WebView } from "react-native-webview"
 import { ActivityIndicator } from 'react-native';
 import { useState } from 'react';
@@ -8,12 +8,15 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
+
     <View style={styles.container}>
-      {isLoading && <ActivityIndicator />}
-      <WebView source={{ uri: 'https://13gac.eb.mil.br/' }}
+      {isLoading && <ActivityIndicator size={'large'} color={'black'} />}
+      <WebView allowsFullscreenVideo={true} source={{ uri: 'https://13gac.eb.mil.br/' }}
         onLoad={() => setIsLoading(false)}
       />
     </View>
+
+
 
   );
 }
@@ -21,7 +24,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 30
 
+  },
+  cotainerFlutuante: {
+    display: 'flex',
+    fontSize: 20,
+    height: 50,
+    width: 50,
+    backgroundColor: 'red',
+    borderRadius: 50,
+    top: -170,
+    left: 420
   },
   ActivityIndicator: {
     flex: 1,
